@@ -8,7 +8,7 @@
 export default {
   name: 'App',
 	beforeCreate() {
-		this.$router.push('../../cart')
+		this.$router.push('../../brand')
 	}
 }
 </script>
@@ -19,7 +19,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
-  color: #2c3e50;
 	font-size: 12px;
 	background: #fff;
 	color: #111;

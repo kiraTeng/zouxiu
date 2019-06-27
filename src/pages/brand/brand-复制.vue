@@ -8,13 +8,12 @@
 		</ul>
 		<!--字母索引-->
 		  <div class="key_list">
-		  	<!--<button @click="show">点击</button>-->
 			<div class="title">按字母查找</div>
-			<!--<div :class="{key:true,jump:isJump}"><a @click="changeHash('#A')">A</a></div>
-			<div :class="{key:true,jump:isJump}"><a @click="changeHash('#B')">B</a></div>
-			<div :class="{key:true,jump:isJump}"><a @click="changeHash('#C')">C</a></div>-->
-			<!--<div class="key" v-for="(item,index) in arr"><a>{{item.spell}}</a></div>-->
-			<!--<div class="key"><a @click="changeHash('#E')">E</a></div>
+			<div class="key"><a @click="changeHash('#A')">A</a></div>
+			<div class="key"><a @click="changeHash('#B')">B</a></div>
+			<div class="key"><a @click="changeHash('#C')">C</a></div>
+			<div class="key"><a @click="changeHash('#D')">D</a></div>
+			<div class="key"><a @click="changeHash('#E')">E</a></div>
 			<div class="key"><a @click="changeHash('#F')">F</a></div>
 			<div class="key"><a @click="changeHash('#G')">G</a></div>
 			<div class="key"><a @click="changeHash('#H')">H</a></div>
@@ -50,7 +49,7 @@
 			<div class="key"><a @click="changeHash('#q')">q</a></div>
 			<div class="key"><a @click="changeHash('#r')">r</a></div>
 			<div class="key"><a @click="changeHash('#s')">s</a></div>
-			<div class="key"><a @click="changeHash('#t')">t</a></div>-->
+			<div class="key"><a @click="changeHash('#t')">t</a></div>
 		</div>
 		<!--品牌信息-->
 <!--字母A-->
@@ -437,7 +436,6 @@
 		},
 		data() {
 			return {
-				isJump:-1,
 				isShow:false,
 				arr:[],
 				a:[],
@@ -491,6 +489,7 @@
 				this.$axios.get('../../../static/Data/detail/brand.json')
 				.then(res=>{
 					this.arr=res.data.data
+					console.log(this.arr.A)
 					this.a=res.data.data.A
 					this.b=res.data.data.B
 					this.c=res.data.data.C
@@ -532,7 +531,7 @@
 					this.rr=res.data.data.r
 					this.ss=res.data.data.s
 					this.tt=res.data.data.t
-					console.log(this.arr)
+					console.log(this.a)
 				}).catch(err=>{
 					console.log(err)
 				})
@@ -540,7 +539,8 @@
 			changeHash(idName){
 				console.log(this.isShow)
 				document.querySelector(idName).scrollIntoView(true)
-				this.isJump = idName
+				this.isShow=true
+				
 			}
 		}
 	}
