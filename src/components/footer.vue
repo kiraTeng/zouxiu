@@ -1,24 +1,19 @@
 <template>
 	<div>
-		<Header></Header>
+		
 	</div>
 </template>
 
 <script>
-	import Header from '../../components/header.vue'
 	export default {
 		data() {
 			return {
 				
 			};
-		},
-		components: {
-			Header
-			
-		},
+		}
 	}
 </script>
 
-<style>
+<style lang="less">
 
 </style>
