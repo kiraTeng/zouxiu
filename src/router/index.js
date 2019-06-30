@@ -32,6 +32,11 @@ export default new Router({
 			component:New
 		},
 		{
+			path:'/brand',
+			name:'brand',
+			component:Brand
+		},
+		{
 			path:'/female',
 			name:'female',
 			component:Female
