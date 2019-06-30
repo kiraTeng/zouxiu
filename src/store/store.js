@@ -6,7 +6,8 @@ export const store = new Vuex.Store({
 			state:{
 				newAdd:false,
 				userAddress:[],
-				dliverTo:{}
+				dliverTo:{},
+				paymentPage:false,
 			},
 			mutations:{
 				newAddCon(state){

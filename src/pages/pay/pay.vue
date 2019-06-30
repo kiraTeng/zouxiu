@@ -6,7 +6,7 @@
                 <i class="iconfont clock">&#xe624;</i>
                 <div class="tip">
                 	<p class="title">请尽快完成支付</p>
-                	<p class="countdown">订单将在<span>1小时10分30秒</span>后关闭</p>
+                	<p class="countdown">订单将在<span>{{countTime|hour}}小时{{countTime|minute}}分{{countTime|second}}秒</span>后关闭</p>
                 </div>
 			</div>
 			<!--订单信息-->
@@ -20,38 +20,67 @@
 				<p class="title">选择支付方式</p>
 				<ul class="pay_list">
 					<li class="pay_type">
-						<label role='radio' class="radio">
+						<label role='radio' @click="checked=true" class="radio">
 							<span class="input">
-								<span class="inner"></span>
+								<span :class="{inner:true,active:checked}"></span>
 								<input type="radio"  class="origin"/>
 							</span>
 							<span class="label"><img src="../../assets/pay/alipay.png" class="img"/></span>
 						</label>
 					</li>
 					<li class="pay_type">
-						<label role='radio' class="radio">
+						<label role='radio' @click="checked=false" class="radio">
 							<span class="input">
-								<span class="inner"></span>
+								<span :class="{inner:true,active:checked==false}"></span>
 								<input type="radio"  class="origin"/>
 							</span>
 							<span class="label"><img src="../../assets/pay/wechat.png" class="img"/></span>
 						</label>
 					</li>
-				</ul>
-				
+				</ul>				
 				<!--支付按钮-->
-				<button type="button" class="btn_pay">去支付</button>
+				<button type="button" @click="pay()" class="btn_pay">去支付</button>
+				<payment :checked='checked'></payment>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+	import payment from './payment'
 	export default {
 		data() {
 			return {
-
+				countTime:1800,
+				checked:true
 			};
+		},
+		components:{
+			payment
+		},
+		mounted() {
+			this.countDown()
+		},
+		filters:{
+			hour(val){
+				return Math.floor(val/3600)
+			},
+			minute(val){
+				return Math.floor(val/60)
+			},
+			second(val){
+				return Math.floor(val%60)
+			}
+		},
+		methods:{
+			countDown(){
+				setInterval(()=>{
+					this.countTime--
+				},1000)
+			},
+			pay(){
+				this.$store.state.paymentPage=true
+			}
 		}
 	}
 </script>
@@ -163,14 +192,24 @@
 								display: inline-block;
 								box-sizing: border-box;
 								border-radius: 50%;
+								position: relative;
+							}
+							.active{
+								border-color: #111;
+								background-color: #111;
 								&:after{
-									content: ;
+									content:'';
 									border-radius: 100%;
 									position: absolute;
+									z-index: 1;
 									left: 50%;
 									top: 50%;
-									transform: translate(-50%,-50%) scale(0);
+									transform: translate(-50%,-50%);
 									transition: transform .15s ease-in;
+									width: 6px;
+									height: 6px;
+									background-color: #fff;
+									display: block;
 								}
 							}
 							.origin{
