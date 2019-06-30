@@ -57,7 +57,7 @@
 				  		<p class="title">购买数量:</p>
 				  		<div :class="{black:isEnter,input:true}">
 				  			<input type="text" v-model="count" @focus="enterFocus()" @blur="enterBlur()"/>
-				  			<div @click="reduce"  @mouseenter="mouseEnter()"  @mouseleave="mouseLeave()"  :class="{reduce:true,disable:isDisable}">-</div>
+				  			<div @click="reduce"  @mouseover="mouseEnter()"  @mouseleave="mouseLeave()"  :class="{reduce:true,disable:isDisable}">-</div>
 				  			<div class="add" @click="add"  @mouseenter="mouseEnter()"  @mouseleave="mouseLeave()">+</div>
 				  		</div>
 				  	</li>
@@ -142,7 +142,7 @@ productParameter
 		},
 		data () {
 	      return {
-	      	isDisable:true, //产品数量为1时 不可点击
+	      	isDisable:false, //产品数量为1时 不可点击
 	      	isEnter:false,//数量点击加减
 	      	isBorder:0,
 	      	indexImg:0,//大图索引
@@ -205,10 +205,7 @@ productParameter
 				window.localStorage.setItem('detailData1',JSON.stringify(obj))*/
 			},
 			reduce(count){
-				this.count--
-				if(this.count<=1){
-					this.count=1
-				}
+				this.count==1?this.count=1:this.count--;
 			},
 			add(count){
 				this.count++
@@ -227,10 +224,11 @@ productParameter
 				this.isBorder = index
 			},
 			mouseEnter(){
-				this.isEnter=true
-				if(this.count=1){
-					console.log(1)
-					this.isDisable = false
+				if(this.count==1){
+					this.isDisable=true
+				}else{
+					this.isEnter=true
+					this.isDisable=false
 				}
 			},
 			mouseLeave(){
@@ -644,9 +642,7 @@ productParameter
    	  border: solid 1px #111111 ;
    }
   /*当产品数量等于1时减号不可添加*/
-    .disable{
-    	cursor: not-allowed;
-    }
+    
  /* 店铺图片大小设置*/
   .store{
   	width: 22px;
@@ -670,4 +666,7 @@ productParameter
 			list-style: none;
 		}
 	}
+	.disable{
+    	cursor: not-allowed !important;
+    }
  </style>
