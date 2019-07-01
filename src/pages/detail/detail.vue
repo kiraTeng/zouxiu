@@ -13,7 +13,11 @@
 			<div class="product_describe">
 				<div class="product_img">
 					<div class="big_img">
+
 						<pic-zoom :url='imgUrlList[indexImg] ' :scale="3"></pic-zoom>
+
+						<pic-zoom :url='imgUrlList[indexImg]' :scale="3"></pic-zoom>
+
 					</div>
 					<div class="small_img">
 						<span class="before"><img src="../../assets/detail/before.png"/></span>
@@ -144,6 +148,11 @@ productParameter
 		},
 		data() {
 			return {
+
+				/*报错部分提示修改开始*/
+				productId:'',
+				originPrice:'',
+				/*报错部分提示修改结束*/
 				isDisable: false, //产品数量为1时 不可点击
 				isEnter: false, //数量点击加减
 				isBorder: 0,
@@ -197,29 +206,26 @@ productParameter
 				this.productDetail = this.$route.query.productDetail; //产品详情图
 			},
 			shopcar() {
-				var shopCartList=this.$store.state.shopCartList
 				let obj = this.obj;
-				obj.count=this.count;
-				let lastInnerSize=obj.innerSize
+				this.obj.count=this.count;
+				let arr=this.arr;
+				let lastInnerSize=this.obj.innerSize
 				var temp=1;
-				if(shopCartList.length == 0) {
-					console.log(0,this.arr)
-					 shopCartList.push(obj)
+				if(arr.length == 0) {
+					console.log(0,arr)
+					 arr.push(obj)
 				} else {
-					for(let i in shopCartList) {
-						if(shopCartList[i].innerSize==obj.innerSize&&shopCartList[i].pname==obj.pname){
-							shopCartList[i].count+=this.count
+					for(let i in arr) {
+						if(arr[i].innerSize==obj.innerSize&&arr[i].pname==obj.pname){
+							arr[i].count+=this.count
 							temp--							
 						}else{
 							temp++							
 						}
 					}					
-				}
-				if(temp>shopCartList.length){
-					shopCartList.push(obj);
-				}
-				for(let item of shopCartList){
-					console.log(item.innerSize,item.count);
+				}	
+				if(temp>arr.length){
+					this.arr.push(obj);
 				}
 				this.obj={
 					innerSize: lastInnerSize, //选中尺寸内容
@@ -229,9 +235,9 @@ productParameter
 					firstClassAttrName: this.$route.query.firstClassAttrName, //颜色
 					proPictDir: this.$route.query.proPictDir,
 					checked:true
-				}
-								
-				console.log(shopCartList)				
+				}																	
+				this.$store.state.shopCarList = this.arr  //数组反馈给到仓库
+				console.log(this.$store.state.shopCarList)
 			},
 			reduce(count) {
 				this.count == 1 ? this.count = 1 : this.count--;

@@ -4,11 +4,12 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 export const store = new Vuex.Store({
 			state:{
+				shopCarList:[],
+				checkoutList:[],
 				newAdd:false,
 				userAddress:[],
 				dliverTo:{},
 				paymentPage:false,
-				shopCartList:[],
 			},
 			mutations:{
 				newAddCon(state){

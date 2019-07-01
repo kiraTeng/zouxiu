@@ -5,6 +5,7 @@
 			<div class="num">{{ item.numV }}</div>
 			<div class="address-detail">{{item.selected}}{{item.detailV}}</div>
 		</li>
+		<!-- 111 -->
 	</ul>
 </template>
 
@@ -14,6 +15,7 @@
 			return {
 				userInfo:this.$store.state.userAddress,
 				checked:0,
+				
 			};
 		},
 		computed:{
@@ -21,9 +23,10 @@
 		},
 		methods:{
 			select(item,index){
-				this.checked=index;
+				this.checked=index;				
 				this.$store.state.dliverTo=item;
 				console.log(this.$store.state.dliverTo)
+				
 			}
 		}
 	}

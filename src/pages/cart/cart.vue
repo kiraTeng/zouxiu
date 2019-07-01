@@ -105,7 +105,7 @@
 // 						price:'1438'
 // 					}
 // 				]
-				cartList:this.$store.state.shopCartList
+				cartList:this.$store.state.shopCarList
 			};
 		},
 		filters: {
@@ -186,6 +186,9 @@
 					alert('请选择商品');
 				}else{
 					this.$router.push('/checkout');
+					for(let item of this.cartList){
+						if(item.checked)this.$store.state.checkoutList.push(item)
+					}
 				}
 			}
 		}
