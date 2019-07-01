@@ -8,7 +8,7 @@
 export default {
   name: 'App',
 	beforeCreate() {
-		this.$router.push('../../pay')
+		this.$router.push('../../new')
 	}
 }
 </script>

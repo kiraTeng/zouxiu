@@ -8,6 +8,7 @@ export const store = new Vuex.Store({
 				userAddress:[],
 				dliverTo:{},
 				paymentPage:false,
+				shopCartList:[],
 			},
 			mutations:{
 				newAddCon(state){
