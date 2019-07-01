@@ -10,7 +10,7 @@ import Register from '@/pages/register/register'
 import Login from '@/pages/login/login'
 import Cart from '@/pages/cart/cart'
 import Checkout from '@/pages/checkout/checkout'
-import Pay from '@/pages/checkout/checkout'
+import Pay from '@/pages/pay/pay'
 import Detail from '@/pages/detail/detail'
 Vue.use(Router)
 
