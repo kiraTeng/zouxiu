@@ -85,26 +85,6 @@
 		data() {
 			return {
 				allSelect: true,//是否全选
-// 				cartList:[
-// 					{
-// 						checked:true,
-// 						imgUrl:"https://sku-images.obs.cn-south-1.myhuaweicloud.com/upload/goods20160402/10451609/104516090001/ori1.jpg",
-// 						name:"男士纯棉针织衫",
-// 						color:"黑色",
-// 						size:"L",
-// 						number:"1",
-// 						price:"1438"
-// 					},
-// 					{
-// 						checked:true,
-// 						imgUrl:"https://sku-images.obs.cn-south-1.myhuaweicloud.com/upload/goods20160402/10451609/104516090001/ori1.jpg",
-// 						name:"男士纯棉针织衫",
-// 						color:"黑色",
-// 						size:"L",
-// 						number:"1",
-// 						price:'1438'
-// 					}
-// 				]
 				cartList:this.$store.state.shopCarList
 			};
 		},
