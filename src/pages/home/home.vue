@@ -1,22 +1,16 @@
 <template>
 	<div>
-		<Header></Header>
+		
+		12123
+		<p>{{this.$store.state.phones}}</p>
+		<p>{{this.$store.state.login}}</p>
+		
 	</div>
 </template>
 
 <script>
-	import Header from '../../components/header.vue'
-	export default {
-		data() {
-			return {
-				
-			};
-		},
-		components: {
-			Header
-			
-		},
-	}
+	
+	
 </script>
 
 <style>

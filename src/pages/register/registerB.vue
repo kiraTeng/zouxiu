@@ -1,51 +1,51 @@
 <template>
 	<div class="wrap">
 		<form action="">
-			<div class="auth-body">
-				<p class="re-title">
-					在zouxiu注册
-				</p>
-				<div class="tip">
-					请填写以下信息在ZOUXIU注册。 我们将保存您提供的资料以方便您网上购物。
+		<div class="auth-body">
+			<p class="re-title">
+				在zouxiu注册
+			</p>
+			<div class="tip">
+				请填写以下信息在ZOUXIU注册。 我们将保存您提供的资料以方便您网上购物。
 
+			</div>
+			<div class="form-group">
+				<div class="label">
+					手机号码
 				</div>
-				<div class="form-group">
-					<div class="label">
-						手机号码
-					</div>
-					<input type="text" class="form-control" @focus="showMe" v-model="phone" />
-					<i class="inco" v-show="isShow" @click="showMe"></i>
+				<input type="text" class="form-control" @focus="showMe" v-model="phone" />
+				<i class="inco" v-show="isShow" @click="showMe"></i>
+			</div>
+			<div class="form-group form-code">
+				<div class="label">
+					短信验证码
 				</div>
-				<div class="form-group form-code">
-					<div class="label">
-						短信验证码
-					</div>
-					<input type="text" class="form-control" @focus="showis" maxlength="6" v-model="msg" />
-					<i class="inco inco-clear" v-show="showIs" @click="showis"></i>
-					<button class="btn" :class="{gray:wait_time>0}" @click="getCode()"> {{getMobileCode()}}</button>
+				<input type="text" class="form-control" @focus="showis" maxlength="6" v-model="msg" />
+				<i class="inco inco-clear" v-show="showIs" @click="showis"></i>
+				<button class="btn" :class="{gray:wait_time>0}" @click="getCode()"> {{getMobileCode()}}</button>
+			</div>
+			<div class="form-group form-code">
+				<div class="label">
+					图形验证码
 				</div>
-				<div class="form-group form-code">
-					<div class="label">
-						图形验证码
-					</div>
-					<input type="text" class="form-control" @focus="showyzm" @blur="checkyzm" maxlength="4" v-model="yzm" />
-					<i class="inco inco-clear" v-show="showIt" @click="showyzm"></i>
-					<div @click='refreshCode'>
-						<Sidentify :identifyCode="identifyCode"></Sidentify>
-					</div>
+				<input type="text" class="form-control" @focus="showyzm" @blur="checkyzm" maxlength="4" v-model="yzm" />
+				<i class="inco inco-clear" v-show="showIt" @click="showyzm"></i>
+				<div @click='refreshCode'>
+					<Sidentify :identifyCode="identifyCode"></Sidentify>
 				</div>
-				<div class="form-group">
-					<div class="label">
-						密码由6-12位英文字母、数字或符号组成
-					</div>
-					<input type="text" class="form-control" @focus="showPwd" @blur="checkpwd" v-model="pwd" />
-					<i class="inco" v-show="showpwd" @click="showPwd"></i>
+			</div>
+			<div class="form-group">
+				<div class="label">
+					密码由6-12位英文字母、数字或符号组成
 				</div>
-				<div class="msg" v-show='checkbtn'>
-					{{infor}}
-				</div>
-				<div class="checkbox">
-					<label for="" @click="check">
+				<input type="text" class="form-control" @focus="showPwd" @blur="checkpwd" v-model="pwd" />
+				<i class="inco" v-show="showpwd" @click="showPwd"></i>
+			</div>
+			<div class="msg" v-show='checkbtn'>
+				{{infor}}
+			</div>
+			<div class="checkbox">
+				<label for="" @click="check">
 						<input id="" type="checkbox" name="checkbox"/>
 						<span :class=" {'checkbox':true,'checked':this.checked==true} "></span>
 						<span class="txt">我同意</span>
@@ -53,9 +53,9 @@
 						
 					</label>
 
-				</div>
-				<button class="btn-login" :class="{'btn-black':this.showbtn==true}" type="button" @click="myuser()">注册</button>
 			</div>
+			<button class="btn-login" :class="{'btn-black':checkpwd()}" type="button"  @click="myuser()">注册</button>
+		</div>
 		</form>
 	</div>
 </template>
@@ -81,34 +81,33 @@
 				infor: '',
 				identifyCodes: "1234567890",
 				identifyCode: "",
-				checkbtn: false,
-			   showbtn:false
-				
+				checkbtn:false
 
 			};
 		},
-		mounted() {
-			this.checkbtn = false
-		},
 		methods: {
 			getCode() {
-
+				console.log(11)
 				if(this.wait_time > 0) {
 					return false;
 				}
 				if(!this.phone) {
-					this.checkbtn = true
-					this.infor = '手机号码不能为空';
+					this.checkbtn=true;
+					/*this.infor = '手机号码不能为空';*/
+					this.infor = 'sfff'
 					return false;
 				}
 				if(!/^1[3|4|5|7|8]\d{9}/.test(this.phone)) {
-					this.checkbtn = true
+					this.checkbtn=true;
+					
+					console.log(2222)
 					this.infor = '手机号码格式不正确';
+					
+
 					return false;
 
-				}
-				if(this.infor = '') {
-
+				}else{
+					this.infor=''
 					return true;
 				}
 				this.wait_time = 59;
@@ -123,7 +122,6 @@
 			},
 			getMobileCode() {
 				if(this.wait_time > 0) {
-
 					return this.wait_time + 's后获取';
 				}
 				if(this.wait_time === 0) {
@@ -134,7 +132,7 @@
 				}
 			},
 			showMe() {
-
+				
 				this.isShow = !this.isShow;
 				this.phone = '';
 
@@ -149,25 +147,31 @@
 				this.showIt = !this.showIt;
 
 				this.yzm = '';
+				
+				
 
 			},
-			checkpwd() {
-				if(this.pwd=='') {
-					this.checkbtn = true
-					console.log('aaa')
+			checkpwd(){
+				if(!this.pwd){
+					
+					
 					this.infor = '密码不能为空';
 					return false;
-				}  if(!/^[a-zA-Z0-9]{6,12}$/.test(this.pwd)) {
-					this.checkbtn = true
+					
+				}
+				else if(!/^[a-zA-Z0-9]{6,12}$/.test(this.pwd)){
+					
+					
 					this.infor = '密码格式不正确';
 					return false;
-				} 
-				
-				else{
-					this.showbtn=true;
-					this.checkbtn = false;
-					this.infor = '';
+					
+				}else{
+					this.checkbtn=false;
+					
+					this.infor='';
 					return true;
+					
+					
 				}
 			},
 			showPwd() {
@@ -195,44 +199,38 @@
 				}
 				console.log(this.identifyCode);
 			},
-			checkyzm() {
-				if(!this.yzm) {
-					this.checkbtn = true
-
+			checkyzm(){
+				if(!this.yzm){
 					this.infor = '验证码不能为空！';
 					return false;
-
-				} else if(this.yzm != this.identifyCode) {
-					this.checkbtn = true
-
+					
+				}
+				if(this.yzm != this.identifyCode){
 					this.infor = '验证码不正确！';
 					return false;
-				} else if(this.yzm == this.identifyCode) {
-					this.checkbtn = false
-                    
+				}else if(this.yzm == this.identifyCode){
+					
 					this.infor = '';
 					return true;
-
+					
 				}
 			},
-			myuser() {
-				if(this.getCode() | this.checkpwd() | this.checkyzm()) {
-					
-					
+			myuser(){
+				if(this.getCode()|this.checkpwd()|this.checkyzm()){
 					this.$store.state.phones = this.phone
-					console.log(this.phone)
-
-					this.$router.push('./home')
-
+				console.log(this.phone)
+				
+				this.$router.push('./home')
 				}
-
+				 
 			}
 
-		},
-		mounted() {
-			this.identifyCode = "";
-			this.makeCode(this.identifyCodes, 4);
-		},
+		
+	},
+	mounted() {
+		this.identifyCode = "";
+		this.makeCode(this.identifyCodes, 4);
+	},
 	}
 </script>
 
@@ -360,9 +358,9 @@
 			color: #FFFFFF;
 			outline: none;
 		}
-		.btn-login.btn-black {
-			background: #111;
-			color: #fff;
+		.btn-login.btn-black{
+			    background: #111;
+                color: #fff;
 		}
 		.msg {
 			color: red;
@@ -370,11 +368,10 @@
 			font-size: 12px;
 		}
 	}
-	
 	.code {
-		margin: 400px auto;
-		width: 114px;
-		height: 40px;
-		border: 1px solid red;
-	}
+  margin: 400px auto;
+  width: 114px;
+  height: 40px;
+  border: 1px solid red;
+}
 </style>

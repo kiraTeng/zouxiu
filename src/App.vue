@@ -8,7 +8,7 @@
 export default {
   name: 'App',
 	beforeCreate() {
-		this.$router.push('../../brand')
+		this.$router.push('../../register')
 	}
 }
 </script>
