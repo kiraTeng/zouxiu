@@ -1,5 +1,5 @@
 <template>
-	<div id="box">
+	<div id="box" class="wrap">
 		
 		<slot name='one'></slot>
 	</div>
