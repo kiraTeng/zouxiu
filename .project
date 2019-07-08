@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>zouxiu</name>
+=======
+	<name>zouxiu-原稿</name>
+>>>>>>> ea3bf4385e2575ce013ea7dcc4c92f857a226a35
 	<comment></comment>
 	<projects>
 	</projects>
@@ -16,7 +20,11 @@
 	</natures>
 	<filteredResources>
 		<filter>
+<<<<<<< HEAD
 			<id>1561627268607</id>
+=======
+			<id>0</id>
+>>>>>>> ea3bf4385e2575ce013ea7dcc4c92f857a226a35
 			<name></name>
 			<type>26</type>
 			<matcher>

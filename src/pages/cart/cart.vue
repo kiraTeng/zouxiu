@@ -20,25 +20,25 @@
 				<ul v-for="(item,index) in cartList" :key='index'>
 					<li class="column"><label for="" @click="item.checked=!item.checked"><input type="checkbox"><span :class="{'checkbox':true,'checked':item.checked==true}"></span></label></li>
 					<li class="column">
-						<img :src="item.imgUrl" alt="" class="goodsImg">
+						<img :src="item.proPictDir" alt="" class="goodsImg">
 						 <div class="goodsDesc">
-							 <div class="name">{{item.name}}</div>
-							 <p class="series">{{item.color}},{{item.size}}</p>
+							 <div class="name">{{item.pname}}</div>
+							 <p class="series">{{item.firstClassAttrName}},{{item.innerSize}}</p>
 						 </div>
 					</li>
 					<li class="column"><span class="symbol">￥</span><span>{{item.price}}</span></li>
 					<li class="column">
 						<div class="numbox">
-							<div :class="{minus:true,isDisable:item.number==1}" @click="minus(index)">
+							<div :class="{minus:true,isDisable:item.count==1}" @click="minus(index)">
 								<i>-</i>
 							</div>
-							<input type="text" :value="item.number">
+							<input type="text" :value="item.count">
 							<div class="add" @click="add(index)">
 								<i>+</i>
 							</div>
 						</div>
 					</li>
-					<li class="column"><span class="symbol">￥</span><span>{{item.price*item.number|numFilter}}</span></li>
+					<li class="column"><span class="symbol">￥</span><span>{{item.price*item.count|numFilter}}</span></li>
 					<li class="column">
 						<button class="deleteBtn" @click="deleteCur(index)">删除</button>
 						<button class="starBtn">加入收藏</button>
@@ -85,26 +85,7 @@
 		data() {
 			return {
 				allSelect: true,//是否全选
-				cartList:[
-					{
-						checked:true,
-						imgUrl:"https://sku-images.obs.cn-south-1.myhuaweicloud.com/upload/goods20160402/10451609/104516090001/ori1.jpg",
-						name:"男士纯棉针织衫",
-						color:"黑色",
-						size:"L",
-						number:"1",
-						price:"1438"
-					},
-					{
-						checked:true,
-						imgUrl:"https://sku-images.obs.cn-south-1.myhuaweicloud.com/upload/goods20160402/10451609/104516090001/ori1.jpg",
-						name:"男士纯棉针织衫",
-						color:"黑色",
-						size:"L",
-						number:"1",
-						price:'1438'
-					}
-				]
+				cartList:this.$store.state.shopCarList
 			};
 		},
 		filters: {
@@ -114,6 +95,9 @@
 			let realVal = tempVal.substring(0, tempVal.length - 1)
 			return realVal
 		  }
+		},
+		beforeCreate(){
+			window.scroll(0,0)
 		},
 		computed: {
 			selectAll(){
@@ -133,31 +117,32 @@
 			choosePro(){
 				var num=0;
 				for(let item of this.cartList){
-					if(item.checked==true)num+=Number(item.number)
+					if(item.checked==true)num+=Number(item.count)
 				}
 				return num
 			},
 			cartNum(){
 				var num=0;
 				for(let item of this.cartList){
-					num+=Number(item.number)
+					num+=Number(item.count)
 				}
 				return num
 			},
 			totalPrice(){
 				var total=0;			
 				for(let item of this.cartList){
-					if(item.checked==true)total+=Number(item.number)*Number(item.price);
+					if(item.checked==true)total+=Number(item.count)*Number(item.price);
 				}
 				return total;
 			}
 		},
 		methods: {
 			add(index){
-				this.cartList[index].number++
+				this.cartList[index].count++
+				console.log(this.$store.state.shopCartList)
 			},
 			minus(index){				
-				this.cartList[index].number==1?this.cartList[index].number=1:this.cartList[index].number--
+				this.cartList[index].count==1?this.cartList[index].count=1:this.cartList[index].count--
 			},
 			allSelectFN(){
 					this.allSelect=!this.allSelect
@@ -184,6 +169,9 @@
 					alert('请选择商品');
 				}else{
 					this.$router.push('/checkout');
+					for(let item of this.cartList){
+						if(item.checked)this.$store.state.checkoutList.push(item)
+					}
 				}
 			}
 		}

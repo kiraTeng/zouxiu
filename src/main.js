@@ -12,6 +12,12 @@ Vue.use(VueLazyload, {
   error:"img加载失败时现实的图片的路径",
 })
 
+
+// 省市级插件
+import VueAreaLinkage from 'vue-area-linkage';
+import 'vue-area-linkage/dist/index.css'; 
+Vue.use(VueAreaLinkage);
+
 /*瀑布流*/
 import waterfall from 'vue-waterfall2'
 Vue.use(waterfall)
