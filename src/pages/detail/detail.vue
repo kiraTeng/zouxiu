@@ -146,6 +146,9 @@ productParameter
 			Customer,
 			productdetail
 		},
+		beforeCreate(){
+			window.scroll(0,0)
+		},
 		data() {
 			return {
 

@@ -1,20 +1,35 @@
 <template>
 	<div>
-		<Header></Header>
+		<Banner swiperid="homeswiper123" paginationtype="bullets" myEffect="slide">
+				<div slot="swiper-con" class="swiper-slide"><img src="../../assets/home/banner1.jpg" alt=""></div>
+				<div slot="swiper-con" class="swiper-slide"><img src="../../assets/home/banner2.jpg" alt=""></div>
+				<div slot="swiper-con" class="swiper-slide"><img src="../../assets/home/banner3.jpg" alt="" /></div>
+				<div slot="swiper-con" class="swiper-slide"><img src="../../assets/home/banner4.jpg" alt="" /></div>
+				<div slot="swiper-con" class="swiper-slide"><img src="../../assets/home/banner5.jpg" alt="" /></div>
+				<div slot="swiper-con" class="swiper-slide"><img src="../../assets/home/banner6.jpg" alt="" /></div>
+				<div slot="swiper-con" class="swiper-slide"><img src="../../assets/home/banner7.jpg" alt="" /></div>
+			</Banner>
+			<Recommend></Recommend>
+			<Goods></Goods>
+		
 	</div>
 </template>
 
 <script>
-	import Header from '../../components/header.vue'
+	import Banner from '../../components/banner.vue'
+	import Recommend from '../../components/Recommend.vue'
+	import Goods from '../../components/goods.vue'
 	export default {
 		data() {
 			return {
-				
+
 			};
 		},
+		beforeCreate(){
+			window.scroll(0,0)
+		},
 		components: {
-			Header
-			
+			Banner,Recommend,Goods
 		},
 	}
 </script>

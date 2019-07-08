@@ -434,6 +434,9 @@
 		components:{
 			 AnchorLink
 		},
+		beforeCreate(){
+			window.scroll(0,0)
+		},
 		data() {
 			return {
 				isColor:-1,

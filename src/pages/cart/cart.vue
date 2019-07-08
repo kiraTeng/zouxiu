@@ -96,6 +96,9 @@
 			return realVal
 		  }
 		},
+		beforeCreate(){
+			window.scroll(0,0)
+		},
 		computed: {
 			selectAll(){
 					var temp=0;

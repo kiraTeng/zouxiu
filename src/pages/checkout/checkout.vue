@@ -121,6 +121,9 @@ export default {
 			
 		};
 	},
+	beforeCreate(){
+			window.scroll(0,0)
+		},
 	computed: {
 		selectAddressShow() {
 			if (this.$store.state.userAddress.length == 0) {
