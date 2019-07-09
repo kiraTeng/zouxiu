@@ -70,7 +70,8 @@
 					<!--购买和购物车-->
 					<div class="shopcar">
 						<button>立即购买</button>
-						<button @click="shopcar">加入购物车</button>
+						<button @click="shopcar" class="car">加入购物车</button>
+                        <img :src="obj.proPictDir" :class="{fly:isFly,activePicture:true}"/>	
 					</div>
 					<!--电话订购-->
 					<p class="phone"><span>电话订购: 400-888-4499</span>(9:00~19:00)</p>
@@ -144,6 +145,10 @@ productParameter
 		},
 		data() {
 			return {
+				/*动画图片*/
+				activeImg:'',//图片来源
+				isFly:false,   //控制动画飞
+				isLook:true,  //控制显示隐藏
 				/*报错部分提示修改开始*/
 				productId:'',
 				originPrice:'',
@@ -180,9 +185,6 @@ productParameter
 		mounted() {
 			this.getData()
 		},
-		computed:{
-			
-		},
 		methods: {
 			getData() {
 				this.obj.pname = this.$route.query.pname; //商品名称
@@ -200,13 +202,21 @@ productParameter
 				this.productDetail = this.$route.query.productDetail; //产品详情图
 			},
 			shopcar() {
+				this.isFly=true;
+				if(this.isLook){
+					this.isLook=false;
+					setTimeout(()=>{
+						this.isLook=true;
+						this.isFly=false;
+						console.log(this.isLook)
+					},2000);
+				}
 				let obj = this.obj;
 				this.obj.count=this.count;
 				let arr=this.arr;
 				let lastInnerSize=this.obj.innerSize
 				var temp=1;
 				if(this.arr.length == 0) {
-					console.log(0,this.arr)
 					 this.arr.push(obj)
 				} else {
 					for(let i in arr) {
@@ -221,9 +231,6 @@ productParameter
 				if(temp>arr.length){
 					this.arr.push(obj);
 				}
-				for(let item of arr){
-					console.log(item.innerSize,item.count);
-				}
 				this.obj={
 					innerSize: lastInnerSize, //选中尺寸内容
 					count: 1, //购物车数量
@@ -233,7 +240,6 @@ productParameter
 					proPictDir: this.$route.query.proPictDir
 				}				
 				this.$store.state.shopCarList = this.arr  //数组反馈给到仓库
-				console.log(this.$store.state.shopCarList)
 			},
 			reduce(count) {
 				this.count == 1 ? this.count = 1 : this.count--;
@@ -575,6 +581,7 @@ productParameter
 	
 	.shopcar {
 		margin-top: 15px;
+		position: relative;
 		button {
 			height: 50px;
 			width: 200px;
@@ -588,9 +595,39 @@ productParameter
 		button:first-child {
 			background-color: #000;
 		}
-		button:last-child {
+		.car{
 			background-color: #c39a58;
 		}
+		
+	}
+	/*购物车动画*/
+	.activePicture{
+		 position: absolute;
+		 top: -50px;
+		 left: 300px;
+	     height: 40px;
+	     width: 30px;
+	     transition: all 2s ease-in;
+	     transform: scale(0,0);
+	}
+	@keyframes fly{
+		from{
+			transform: scale(1,1);
+			top: -50px;
+		 left: 300px;
+		}
+		to{
+			transform: scale(0,0);
+			top: -400px;
+		left: -230px;
+		}
+	}
+	.fly{
+		position: absolute;
+		top: -400px;
+		left: -230px;
+		display: block;
+		animation: fly 2s both;
 	}
 	/*电话订购*/
 	
