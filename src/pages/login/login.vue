@@ -25,7 +25,9 @@
 				<div class="login-title">
 					使用其他网站账号登录
 				</div>
-				<img src="../../assets/regitser/fenx.jpg" class="fenx"/>
+				<img src="../../assets/regitser/wx.png" class="fen fenx"/>
+				<img src="../../assets/regitser/QQ.png" class="fenx"/>
+			
 			</li>
 			
 			
@@ -203,10 +205,14 @@
 				color: #161619;
 			}
 		}
+		.fen{
+			margin-right: 33px;
+		}
 		.fenx{
 			padding-top: 20px;
-			width: 120px;
-			height: 100px;
+			width: 34px;
+			height: 34px;
+			
 		}
 		
 	}
