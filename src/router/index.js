@@ -12,6 +12,7 @@ import Cart from '@/pages/cart/cart'
 import Checkout from '@/pages/checkout/checkout'
 import Pay from '@/pages/pay/pay'
 import Detail from '@/pages/detail/detail'
+import Yidong from '@/pages/yidong/yidong'
 Vue.use(Router)
 
 export default new Router({
@@ -75,6 +76,11 @@ export default new Router({
 			path:'/detail',
 			name:'detail',
 			component:Detail
+		},
+		{
+			path:'/yidong',
+			name:'yidong',
+			component:Yidong
 		}
   ]
 })

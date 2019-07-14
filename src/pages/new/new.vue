@@ -26,6 +26,9 @@
 	    components:{
 	    	waterfall
 	    },
+	    beforeCreate(){
+			window.scroll(0,0)
+		},
 		data() {
 			return {
 				isShadow:-1,

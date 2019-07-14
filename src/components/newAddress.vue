@@ -125,7 +125,10 @@ export default {
 				this.$store.commit('newAddCon')
 				this.usersContact.selected=this.usersContact.selected.join('');
 				this.$store.state.userAddress.push(this.usersContact);
-				console.log(this.$store.state.userAddress)
+				var arr = Object.keys(this.$store.state.dliverTo);
+				if(arr.length==0){
+				this.$store.state.dliverTo=this.$store.state.userAddress[0];					
+				}
 				this.usersContact={
 					nameV:'',
 					numV:'',
@@ -135,6 +138,8 @@ export default {
 				this.detailCorr=false;
 				this.nameCorr=false;
 				this.numCorr=false;
+				console.log(this.$store.state.dliverTo)
+
 			}
 			
 		},

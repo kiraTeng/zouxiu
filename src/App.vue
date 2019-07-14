@@ -1,15 +1,23 @@
 <template>
   <div id="app">
+  	<!--<Header></Header>-->
+  	<myhead></myhead>
     <router-view/>
+    <foot></foot>
   </div>
 </template>
 
 <script>
+import myhead from './components/header.vue'
+import foot from './components/footer.vue'
 export default {
   name: 'App',
 	beforeCreate() {
-		this.$router.push('../../new')
-	}
+		this.$router.push('../../home')
+	},
+	components:{
+			foot,myhead	
+	},
 }
 </script>
 

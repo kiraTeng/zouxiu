@@ -22,26 +22,26 @@
 				<li class="column">小计</li>
 			</ul>
 			<div class="listBody">
-				<ul class="column-ul">
+				<ul class="column-ul" v-for="(item,index) in checkoutList" :key='index'>
 					<li class="column">
 						<img
 							class="productImg"
-							src="https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1560133461627.png"
+							:src="item.proPictDir"
 							alt=""
 						/>
 						<div class="proInfo">
-							<div class="proName">女士时尚休闲短裤19年春夏新款</div>
-							<div class="proSeries">白色,XS</div>
+							<div class="proName">{{item.pname}}</div>
+							<div class="proSeries">{{item.firstClassAttrName}},{{item.innerSize}}</div>
 						</div>
 					</li>
 					<li class="column">
 						<span class="unit">￥</span>
-						1113
+						{{item.price}}
 					</li>
-					<li class="column">1件</li>
+					<li class="column">{{item.count}}件</li>
 					<li class="column">
 						<span class="unit">￥</span>
-						1113
+						{{item.count*item.price}}
 					</li>
 				</ul>
 				<div class="remark">
@@ -76,11 +76,11 @@
 						</span>
 						<br />
 						共&nbsp;
-						<span>1</span>
+						<span>{{allNum}}</span>
 						件&nbsp;&nbsp;&nbsp;小计：
 						<span>
 							<span class="unit">￥</span>
-							1113
+							{{sumAll}}
 						</span>
 					</p>
 				</div>
@@ -98,10 +98,10 @@
 					应付金额：&nbsp;&nbsp;
 					<span>
 						<span class="unit">￥</span>
-						1113
+						{{sumAll}}
 					</span>
 				</div>
-				<button>确认订单</button>
+				<button @click="confirmOrder()">确认订单</button>
 			</div>
 		</div>
 	</div>
@@ -116,9 +116,14 @@ export default {
 		return {
 			arrowDirection: false,
 			couponV: '不使用',
-			wantInvoice: false
+			wantInvoice: false,
+			checkoutList:this.$store.state.shopCarList,
+			
 		};
 	},
+	beforeCreate(){
+			window.scroll(0,0)
+		},
 	computed: {
 		selectAddressShow() {
 			if (this.$store.state.userAddress.length == 0) {
@@ -126,6 +131,21 @@ export default {
 			} else {
 				return true;
 			}
+			// return true
+		},
+		allNum(){
+			var num=0;
+			for(let item of this.checkoutList){
+				num+=Number(item.count)
+			}
+			return num;
+		},
+		sumAll(){
+			let sum=0;
+			for(let item of this.checkoutList){
+				sum+=Number(item.count)*Number(item.price)
+			}
+			return sum
 		}
 	},
 	components: {
@@ -136,9 +156,18 @@ export default {
 	methods: {
 		addAddress() {
 			this.$store.commit('newAddCon');
+			console.log(this.$store.state.dliverTo)
 		},
 		backToCart() {
 			this.$router.push('../../cart');
+		},
+		confirmOrder(){
+			if(this.$store.state.userAddress.length==0){
+				alert('请填入收货地址信息')
+				return;
+			}else{
+				this.$router.push('../../pay')
+			}
 		}
 	}
 };

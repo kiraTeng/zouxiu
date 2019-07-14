@@ -8,48 +8,48 @@
 		</ul>
 		<!--字母索引-->
 		  <div class="key_list">
-			<div class="title">按字母查找</div>
-			<div class="key"><a @click="changeHash('#A',0)">A</a></div>
-			<div class="key"><a @click="changeHash('#B',1)">B</a></div>
-			<div class="key"><a @click="changeHash('#C',2)">C</a></div>
-			<div class="key"><a @click="changeHash('#D',3)">D</a></div>
-			<div class="key"><a @click="changeHash('#E',4)">E</a></div>
-			<div class="key"><a @click="changeHash('#F',5)">F</a></div>
-			<div class="key"><a @click="changeHash('#G',6)">G</a></div>
-			<div class="key"><a @click="changeHash('#H',7)">H</a></div>
-			<div class="key"><a @click="changeHash('#I',8)">I</a></div>
-			<div class="key"><a @click="changeHash('#J',9)">J</a></div>
-			<div class="key"><a @click="changeHash('#K',10)">K</a></div>
-			<div class="key"><a @click="changeHash('#L',11)">L</a></div>
-			<div class="key"><a @click="changeHash('#M',12)">M</a></div>
-			<div class="key"><a @click="changeHash('#N',13)">N</a></div>
-			<div class="key"><a @click="changeHash('#O',14)">O</a></div>
-			<div class="key"><a @click="changeHash('#P',15)">P</a></div>
-			<div class="key"><a @click="changeHash('#Q',16)">Q</a></div>
-			<div class="key"><a @click="changeHash('#R',17)">R</a></div>
-			<div class="key"><a @click="changeHash('#S',18)">S</a></div>
-			<div class="key"><a @click="changeHash('#T',19)">T</a></div>
-			<div class="key"><a @click="changeHash('#U',20)">U</a></div>
-			<div class="key"><a @click="changeHash('#V',21)">V</a></div>
-			<div class="key"><a @click="changeHash('#W',22)">W</a></div>
-			<div class="key"><a @click="changeHash('#X',23)">X</a></div>
-			<div class="key"><a @click="changeHash('#Y',24)">Y</a></div>
-			<div class="key"><a @click="changeHash('#Z',25)">Z</a></div>
-			<div class="key"><a @click="changeHash('#a',26)">a</a></div>
-			<div class="key"><a @click="changeHash('#b',27)">b</a></div>
-			<div class="key"><a @click="changeHash('#c',28)">c</a></div>
-			<div class="key"><a @click="changeHash('#d',29)">d</a></div>
-			<div class="key"><a @click="changeHash('#e',30)">e</a></div>
-			<div class="key"><a @click="changeHash('#g',31)">g</a></div>
-			<div class="key"><a @click="changeHash('#h',32)">h</a></div>
-			<div class="key"><a @click="changeHash('#k',33)">k</a></div>
-			<div class="key"><a @click="changeHash('#I',34)">I</a></div>
-			<div class="key"><a @click="changeHash('#m',35)">m</a></div>
-			<div class="key"><a @click="changeHash('#p',36)">p</a></div>
-			<div class="key"><a @click="changeHash('#q',37)">q</a></div>
-			<div class="key"><a @click="changeHash('#r',38)">r</a></div>
-			<div class="key"><a @click="changeHash('#s',39)">s</a></div>
-			<div class="key"><a @click="changeHash('#t',40)">t</a></div>
+			<div class="title1">按字母查找</div>
+			<div class="keys"><a @click="changeHash('#A',0)">A</a></div>
+			<div class="keys"><a @click="changeHash('#B',1)">B</a></div>
+			<div class="keys"><a @click="changeHash('#C',2)">C</a></div>
+			<div class="keys"><a @click="changeHash('#D',3)">D</a></div>
+			<div class="keys"><a @click="changeHash('#E',4)">E</a></div>
+			<div class="keys"><a @click="changeHash('#F',5)">F</a></div>
+			<div class="keys"><a @click="changeHash('#G',6)">G</a></div>
+			<div class="keys"><a @click="changeHash('#H',7)">H</a></div>
+			<div class="keys"><a @click="changeHash('#I',8)">I</a></div>
+			<div class="keys"><a @click="changeHash('#J',9)">J</a></div>
+			<div class="keys"><a @click="changeHash('#K',10)">K</a></div>
+			<div class="keys"><a @click="changeHash('#L',11)">L</a></div>
+			<div class="keys"><a @click="changeHash('#M',12)">M</a></div>
+			<div class="keys"><a @click="changeHash('#N',13)">N</a></div>
+			<div class="keys"><a @click="changeHash('#O',14)">O</a></div>
+			<div class="keys"><a @click="changeHash('#P',15)">P</a></div>
+			<div class="keys"><a @click="changeHash('#Q',16)">Q</a></div>
+			<div class="keys"><a @click="changeHash('#R',17)">R</a></div>
+			<div class="keys"><a @click="changeHash('#S',18)">S</a></div>
+			<div class="keys"><a @click="changeHash('#T',19)">T</a></div>
+			<div class="keys"><a @click="changeHash('#U',20)">U</a></div>
+			<div class="keys"><a @click="changeHash('#V',21)">V</a></div>
+			<div class="keys"><a @click="changeHash('#W',22)">W</a></div>
+			<div class="keys"><a @click="changeHash('#X',23)">X</a></div>
+			<div class="keys"><a @click="changeHash('#Y',24)">Y</a></div>
+			<div class="keys"><a @click="changeHash('#Z',25)">Z</a></div>
+			<div class="keys"><a @click="changeHash('#a',26)">a</a></div>
+			<div class="keys"><a @click="changeHash('#b',27)">b</a></div>
+			<div class="keys"><a @click="changeHash('#c',28)">c</a></div>
+			<div class="keys"><a @click="changeHash('#d',29)">d</a></div>
+			<div class="keys"><a @click="changeHash('#e',30)">e</a></div>
+			<div class="keys"><a @click="changeHash('#g',31)">g</a></div>
+			<div class="keys"><a @click="changeHash('#h',32)">h</a></div>
+			<div class="keys"><a @click="changeHash('#k',33)">k</a></div>
+			<div class="keys"><a @click="changeHash('#I',34)">I</a></div>
+			<div class="keys"><a @click="changeHash('#m',35)">m</a></div>
+			<div class="keys"><a @click="changeHash('#p',36)">p</a></div>
+			<div class="keys"><a @click="changeHash('#q',37)">q</a></div>
+			<div class="keys"><a @click="changeHash('#r',38)">r</a></div>
+			<div class="keys"><a @click="changeHash('#s',39)">s</a></div>
+			<div class="keys"><a @click="changeHash('#t',40)">t</a></div>
 		</div>
 		<!--品牌信息-->
 <!--字母A-->
@@ -434,6 +434,10 @@
 		components:{
 			 AnchorLink
 		},
+		beforeCreate(){
+			window.scroll(0,0)
+			
+		},
 		data() {
 			return {
 				isColor:-1,
@@ -589,7 +593,8 @@
 		flex-wrap: wrap;
 		box-sizing: border-box;
 		width: 1200px;
-		.title{
+		height: 90px;
+		.title1{
 			position: absolute;
 			top: 20px;
 			left: 0;
@@ -598,13 +603,19 @@
 			font-size: 12px;
 			color: #333333;
 		}
-		.key{
+		.keys{
 			padding-bottom: 20px;
 			margin-right: 20px;
 			font-size: 14px;
 			cursor: pointer;
+			height: 10px;
+			width: 10px ;
 			a{
 				color: #111;
+				height: 10px;
+				width: 10px;
+				display: block;
+				/*border: dashed 1px red !important;*/
 			}
 		}
 	}

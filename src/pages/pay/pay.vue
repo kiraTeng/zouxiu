@@ -11,8 +11,8 @@
 			</div>
 			<!--订单信息-->
 			<div class="order_info">
-				<p class="order_price">应付：<span><span class="unit">¥</span>113</span></p>
-				<p class="detail_info">收货信息<span>阮仔仔</span><span>18617100936</span><span>广东省深圳市南山区麦芽口腔</span></p>
+				<p class="order_price">应付：<span><span class="unit">¥</span>{{price}}</span></p>
+				<p class="detail_info">收货信息<span>{{userInfo.nameV}}</span><span>{{userInfo.numV}}</span><span>{{userInfo.selected}}{{userInfo.detailV}}</span></p>
 			</div>
 			
 			<!--支付信息-->
@@ -52,11 +52,25 @@
 		data() {
 			return {
 				countTime:1800,
-				checked:true
+				checked:true,
+				userInfo:this.$store.state.dliverTo,
+				
 			};
+		},
+		beforeCreate(){
+			window.scroll(0,0)
 		},
 		components:{
 			payment
+		},
+		computed:{
+			price(){
+				var total =0;
+				for(let item of this.$store.state.checkoutList){
+					total+=Number(item.count)*Number(item.price)
+				}
+				return total;
+			}
 		},
 		mounted() {
 			this.countDown()
@@ -80,6 +94,7 @@
 			},
 			pay(){
 				this.$store.state.paymentPage=true
+				console.log(this.userInfo)
 			}
 		}
 	}
