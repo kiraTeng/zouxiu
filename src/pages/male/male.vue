@@ -3,7 +3,7 @@
 		<one>
 			 <img  v-for="(item,index) in arr.group_list"  v-lazy='item.cover_url' class="bannner" slot='one'/>
 		</one>
-		<h1 class="title">男士精选</h1>
+		<h1 class="mytitle">男士精选</h1>
 		<two  >
 			<img v-for="(item,index) in arr2.group_list" v-lazy='item.cover_url' slot='two'/>
 			
@@ -81,6 +81,9 @@
 	background:#F2F9FE;
 	.two{
 		padding-top: 20px;
+	}
+	.mytitle{
+		margin: 0 auto;
 	}
 }
 img{

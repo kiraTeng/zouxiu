@@ -6,7 +6,7 @@
 	     <img  v-for="(item,index) in arr0"  v-lazy='item.image' class="bannner" slot='one'/>
 		
 		</one>
-		<h1 class="title">女士精选</h1>
+		<h1 class="mytitle">女士精选</h1>
 		<two>
 			
 			<img v-for="(item,index) in arr.group_list" v-lazy='item.cover_url' slot='two'/>
@@ -99,6 +99,9 @@
 <style lang="less">
 .section{
 	background:rgb(246, 234, 218);
+	.mytitle{
+		margin:0 auto;
+	}
 }
 img{
 			cursor: pointer;

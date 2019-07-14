@@ -2,9 +2,11 @@
 	<div>
 		<div class="header wrap">
 			<div class="left">
-				<button @click='toRegis()'>注册</button>
-				<button @click='toLogin()'>登录</button>
+				<p :class="{phonenum:this.$store.state.showIt==true,none:this.$store.state.showIt==false}" >{{this.$store.state.phones|forMate}} <span :class="{red:this.$store.state.showIt==true,no:this.$store.state.showIt==false}" @click="checkout()" >[退出登录]</span></p>
+				<button @click='toRegis()' :class="{activee:this.$store.state.isClick,'false':this.$store.state.isClick==false}"  >{{this.$store.state.zhuce}}</button>
+				<button @click='toLogin()' :class="{activee:this.$store.state.isClick,'false':this.$store.state.isClick==false}" >{{this.$store.state.denglu}}</button>
 				<img @click='toCart()' src="../assets/public/gouwuchekong.png" alt="">
+				
 			</div>
 			<img  src="../assets/public/logo.png" class="logo" alt="">
 			<div class="right">
@@ -103,7 +105,8 @@
 
 			return {
 				msg: [],
-				selected:'home' //当前选中 current
+				selected:'home',//当前选中 current
+				showMe:false
 			};
 		},
 		components: {
@@ -121,6 +124,14 @@
             },
             toLogin(){
             	this.$router.push('../../login')
+            },
+            checkout(){
+            	
+            	this.$store.state.zhuce='注册';
+            	this.$store.state.denglu='登录';
+            	this.$store.state.isClick=true;
+            	this.$store.state.showIt=false;
+            	this.$router.push('./login')
             }
 		},
 		mounted() {
@@ -133,7 +144,14 @@
 //				.catch(err => {
 //					console.log('err', err);
 //				});
+	},
+	filters:{
+		forMate(val){
+			if(val){
+				return '您好！'+val.substring(0,3)+'****'+val.substring(7,13)
+			}
 		}
+	}
 	};
 </script>
 
@@ -163,9 +181,12 @@
 				cursor: pointer;
 			}
 
+       button.false{
+       	display: none;
+       }
 
-
-			button {
+			
+			button.activee{
 				padding-left: 16px;
 				padding-right: 16px;
 				height: 16px;
@@ -178,8 +199,19 @@
 				outline: none;
 				border: none;
 				border-right: 1px solid #bbb;
-
-
+			}
+			p>span.red{
+				color: red;
+				text-decoration: underline;
+			}
+			p>span.no{
+				display: none;
+			}
+			p.phonenum{
+				font-size: 14px;
+			}
+			p.none{
+				display: none;
 			}
 		}
 

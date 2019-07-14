@@ -1,0 +1,172 @@
+
+{
+	"code": "0000",
+	"toast": "",
+	"new_recommend_count_str": "",
+	"group": [
+	{
+			
+			"group_list": [
+				{
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557040644542.jpg"
+				}
+			]
+		},
+		{
+			
+			"group_list": [
+				{
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557038693247.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557038673611.png"
+				}
+			]
+		},  {
+			
+			"group_list": [
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557038802026.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557038835618.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557038867891.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557038885000.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557038993766.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039192165.png"
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039248671.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039277356.png"
+				},{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039294895.png"
+				}
+				
+			]
+		},
+		{
+			
+			"group_list": [
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557041378974.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557041407424.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557041426181.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557041449592.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557041469803.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557041488804.png"
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557041509178.png"
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557041532695.png"
+				}
+				
+			]
+		},
+		{
+			
+			"group_list": [
+				{
+				
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039562672.png"
+					
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039604846.png"
+					
+				}
+			]
+		},
+		{
+			
+			"group_list": [
+				{
+				
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039772681.png"
+					
+				}, {
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039798769.png"
+					
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039823336.png"
+					
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039850640.png"
+					
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039866432.png"
+					
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039884087.png"
+					
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039945015.png"
+					
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039970295.png"
+					
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557039988133.png"
+					
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557040010338.png"
+					
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557040024686.png"
+					
+				},
+				{
+					
+					"cover_url": "https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1557040041408.png"
+					
+				}
+				
+			]
+		}
+	]
+}

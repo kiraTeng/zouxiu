@@ -218,11 +218,10 @@
 			myuser() {
 				if(this.getCode() | this.checkpwd() | this.checkyzm()) {
 					
-					
 					this.$store.state.phones = this.phone
-					console.log(this.phone)
-
-					this.$router.push('./home')
+					this.$store.state.pwd = this.pwd
+					
+					this.$router.push('./login')
 
 				}
 
@@ -233,6 +232,9 @@
 			this.identifyCode = "";
 			this.makeCode(this.identifyCodes, 4);
 		},
+		beforeCreate(){
+			window.scroll(0,0)
+		}
 	}
 </script>
 

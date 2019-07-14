@@ -13,6 +13,11 @@ export const store = new Vuex.Store({
 				userAddress:[],
 				dliverTo:{},
 				paymentPage:false,
+				zhuce:'注册',
+				denglu:'登录',
+				isClick:true,
+				showIt:false,
+				pwd:''
 			},
 			mutations:{
 				newAddCon(state){

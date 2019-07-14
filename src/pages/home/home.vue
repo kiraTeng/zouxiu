@@ -3,8 +3,8 @@
 
 		
 		
-		<p>{{this.$store.state.phones}}</p>
-		<p>{{this.$store.state.login}}</p>
+		<!--<p></p>-->
+	
 
 		<Banner swiperid="homeswiper123" paginationtype="bullets" myEffect="slide">
 				<div slot="swiper-con" class="swiper-slide"><img src="../../assets/home/banner1.jpg" alt=""></div>
