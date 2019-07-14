@@ -141,7 +141,7 @@ form {
 				color: #dcdfe6;
 			}
 			&:focus {
-				border-color: black;
+				border-color: black !important;
 			}
 		
 			&:hover {

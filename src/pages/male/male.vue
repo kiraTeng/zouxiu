@@ -83,7 +83,10 @@
 		padding-top: 20px;
 	}
 	.mytitle{
-		margin: 0 auto;
+		padding: 10px 0;
+		text-align: center;
+		font-weight: normal;
+		font-size: 28px;
 	}
 }
 img{

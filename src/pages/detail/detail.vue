@@ -40,25 +40,25 @@
 					<!--产品价格显示-->
 					<div class="price"><span class="symbol">￥</span>{{obj.price}}<span class="discount">￥{{originPrice}}</span></div>
 					<!--产品具体细节-->
-					<ul class="product_detail">
+					<ul class="product_details">
 						<li>
-							<p class="title send">发货地:</p>
+							<p class="titles send">发货地:</p>
 							<p class="region"><span>{{region}}</span><span>预计7-14个工作日送达</span></p>
 						</li>
 						<li>
-							<p class="title">税&nbsp;&nbsp;&nbsp;费:</p>
+							<p class="titles">税&nbsp;&nbsp;&nbsp;费:</p>
 							<p class="shop">商家承担</p>
 						</li>
 						<li>
-							<p class="title">颜色:</p>
+							<p class="titles">颜色:</p>
 							<p><span :class="{parent:true,choose:true}">{{obj.firstClassAttrName}}</span></p>
 						</li>
 						<li>
-							<p class="title">尺码:</p>
+							<p class="titles">尺码:</p>
 							<p><span :class="{parent:index==isBlack,choose:true}" v-for="(item,index) in skuAndPriceList" @click="black(index)" ref="menuItem">{{item.subClassAttrName}}</span></p>
 						</li>
 						<li>
-							<p class="title">购买数量:</p>
+							<p class="titles">购买数量:</p>
 							<div :class="{black:isEnter,input:true}">
 								<input type="text" v-model="count" @focus="enterFocus()" @blur="enterBlur()" />
 								<div @click="reduce" @mouseover="mouseEnter()" @mouseleave="mouseLeave()" :class="{reduce:true,disable:isDisable}">-</div>
@@ -73,8 +73,9 @@
 					</ul>
 					<!--购买和购物车-->
 					<div class="shopcar">
-						<button>立即购买</button>
-						<button @click="shopcar">加入购物车</button>
+						<button @click="shoping">立即购买</button>
+						<button @click="shopcar" class="car">加入购物车</button>
+                        <img :src="obj.proPictDir" :class="{fly:isFly,activePicture:true}"/>	
 					</div>
 					<!--电话订购-->
 					<p class="phone"><span>电话订购: 400-888-4499</span>(9:00~19:00)</p>
@@ -151,7 +152,13 @@ productParameter
 		},
 		data() {
 			return {
-
+				istip:false,
+				/*购物车总数*/
+				shopnum:0,
+				/*动画图片*/
+				activeImg:'',//图片来源
+				isFly:false,   //控制动画飞
+				isLook:true,  //控制显示隐藏
 				/*报错部分提示修改开始*/
 				productId:'',
 				originPrice:'',
@@ -163,7 +170,6 @@ productParameter
 				index: 0,
 				isShow: true,
 				isActive: true,
-				arr: [],
 				obj: {
 					innerSize: '', //选中尺寸内容
 					count: 1, //购物车数量
@@ -187,10 +193,9 @@ productParameter
 			}
 		},
 		mounted() {
-			this.getData()
-		},
-		computed:{
-			
+			this.getData(),
+			this.$store.state.innersize = this.$route.query.skuAndPriceList
+			console.log(this.$store.state.innersize )
 		},
 		methods: {
 			getData() {
@@ -208,14 +213,26 @@ productParameter
 				this.imgUrlList = this.$route.query.imgUrlList; //轮播动态细节图
 				this.productDetail = this.$route.query.productDetail; //产品详情图
 			},
+			shoping(){
+				this.$router.push('../../checkout')
+			},
 			shopcar() {
+					this.$store.state.shopNum = this.shopnum
+					this.$store.state.isNum = true
+				this.isFly=true;
+				if(this.isLook){
+					this.isLook=false;
+					setTimeout(()=>{
+						this.isLook=true;
+						this.isFly=false;
+					},2000);
+				}
 				let obj = this.obj;
 				this.obj.count=this.count;
-				let arr=this.arr;
-				let lastInnerSize=this.obj.innerSize
+				let arr=this.$store.state.shopCarList;
+				let lastInnerSize=this.obj.innerSize;
 				var temp=1;
 				if(arr.length == 0) {
-					console.log(0,arr)
 					 arr.push(obj)
 				} else {
 					for(let i in arr) {
@@ -228,7 +245,7 @@ productParameter
 					}					
 				}	
 				if(temp>arr.length){
-					this.arr.push(obj);
+					arr.push(obj);
 				}
 				this.obj={
 					innerSize: lastInnerSize, //选中尺寸内容
@@ -239,7 +256,7 @@ productParameter
 					proPictDir: this.$route.query.proPictDir,
 					checked:true
 				}																	
-				this.$store.state.shopCarList = this.arr  //数组反馈给到仓库
+				/*this.$store.state.shopCarList = this.arr */ //数组反馈给到仓库
 				console.log(this.$store.state.shopCarList)
 			},
 			reduce(count) {
@@ -250,6 +267,7 @@ productParameter
 			},
 			black(index) { //获取点击尺码选项时的文字内容
 				this.isBlack = index
+				/*this.count = 1 */ //第一次选中当前尺码样式  尺码数量默认为1
 				let getMenuText = this.$refs.menuItem[index].innerText;
 				return this.obj.innerSize = getMenuText
 			},
@@ -284,7 +302,6 @@ productParameter
 
 <style lang="less">
 	/*轮播图*/
-	
 	.swiper-slide {
 		height: 110px !important;
 		width: 105px !important;
@@ -463,7 +480,7 @@ productParameter
 				text-decoration: line-through;
 			}
 		}
-		.product_detail {
+		.product_details{
 			width: 100%;
 			>li {
 				list-style: none;
@@ -472,8 +489,9 @@ productParameter
 				line-height: 50px;
 				display: flex;
 				font-size: 14px;
-				.title {
+				.titles {
 					font-weight: 700;
+					font-size: 15px;
 				}
 				.region {
 					color: #c39a58;
@@ -529,6 +547,9 @@ productParameter
 					outline: none;
 					overflow: hidden;
 				}
+				>div{
+					user-select:none;
+				}
 				.reduce {
 					position: absolute;
 					left: 0;
@@ -582,6 +603,7 @@ productParameter
 	
 	.shopcar {
 		margin-top: 15px;
+		position: relative;
 		button {
 			height: 50px;
 			width: 200px;
@@ -591,13 +613,46 @@ productParameter
 			text-align: center;
 			color: #fff;
 			font-size: 14px;
+			outline: none;
+			cursor: pointer;
 		}
 		button:first-child {
 			background-color: #000;
 		}
-		button:last-child {
+		.car{
 			background-color: #c39a58;
 		}
+		
+	}
+	/*购物车动画*/
+	.activePicture{
+		 position: absolute;
+		 top: -50px;
+		 left: 300px;
+	     height: 40px;
+	     width: 30px;
+	     transition: all 2s ease-in;
+	     transform: scale(0,0);
+	}
+	@keyframes fly{
+		from{
+			transform: scale(1);
+			top: -50px;
+		    left: 300px;
+		}
+		to{
+			transform: scale(.4);
+			top: -650px;
+		    left: -472px;
+		}
+	}
+	.fly{
+		position: absolute;
+		top: -400px;
+		left: -230px;
+		display: block;
+		animation: fly 2s both;
+		box-shadow:0px 0px 10px skyblue;
 	}
 	/*电话订购*/
 	

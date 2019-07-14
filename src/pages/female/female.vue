@@ -96,11 +96,14 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .section{
 	background:rgb(246, 234, 218);
 	.mytitle{
-		margin:0 auto;
+		padding: 10px 0;
+		text-align: center;
+		font-weight: normal;
+		font-size: 28px;
 	}
 }
 img{

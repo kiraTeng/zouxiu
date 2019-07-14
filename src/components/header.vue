@@ -2,11 +2,18 @@
 	<div>
 		<div class="header wrap">
 			<div class="left">
+
 				<p :class="{phonenum:this.$store.state.showIt==true,none:this.$store.state.showIt==false}" >{{this.$store.state.phones|forMate}} <span :class="{red:this.$store.state.showIt==true,no:this.$store.state.showIt==false}" @click="checkout()" >[退出登录]</span></p>
 				<button @click='toRegis()' :class="{activee:this.$store.state.isClick,'false':this.$store.state.isClick==false}"  >{{this.$store.state.zhuce}}</button>
 				<button @click='toLogin()' :class="{activee:this.$store.state.isClick,'false':this.$store.state.isClick==false}" >{{this.$store.state.denglu}}</button>
 				<img @click='toCart()' src="../assets/public/gouwuchekong.png" alt="">
 				
+
+				<!--<button @click='toRegis()'>注册</button>
+				<button @click='toLogin()'>登录</button>-->
+				<!--<img @click='toCart()' src="../assets/public/gouwuchekong.png" alt="" >-->
+				<span :class="{shopnum:this.$store.state.isNum}" v-show="isShow">{{allCount}}</span>
+
 			</div>
 			<img  src="../assets/public/logo.png" class="logo" alt="">
 			<div class="right">
@@ -105,8 +112,13 @@
 
 			return {
 				msg: [],
+
 				selected:'home',//当前选中 current
-				showMe:false
+				showMe:false,
+
+				isNum:false,
+				selected:'home' //当前选中 current
+
 			};
 		},
 		components: {
@@ -134,6 +146,7 @@
             	this.$router.push('./login')
             }
 		},
+
 		mounted() {
 //			this.$axios.get('../../static/data/Clothes.json')
 //
@@ -148,11 +161,28 @@
 	filters:{
 		forMate(val){
 			if(val){
-				return '您好！'+val.substring(0,3)+'****'+val.substring(7,13)
+				return '您好！'+val.substring(0,3)+'****'+val.substring(7,13)}
+}},
+		computed:{
+			allCount(){
+				var count = 0
+				this.$store.state.shopCarList.forEach((item,index)=>{
+					count += item.count
+					console.log(count)
+				})
+				return count
+			},
+			isShow(){
+				if(this.$store.state.shopCarList.length==0){
+					return false;
+				}else{
+					return true;
+				}
+
 			}
 		}
 	}
-	};
+	
 </script>
 
 <style lang="less">
@@ -168,8 +198,6 @@
 			left: ;
 			top: 10px;
 			box-sizing: border-box;
-
-
 			img {
 				width: 18px;
 				height: 18px;
@@ -379,4 +407,24 @@
 			}
 		}
 	}
+	
+	/*购物车数量样式*/
+	.left{
+		position: relative;
+		.shopnum{
+			position: absolute;
+			top: 0px;
+			right: -30px;
+		    height: 15px;
+		    display: block;
+		    text-align: center;
+		    width: 20px;
+		    font-size: 12px;
+		    background-color: #e93b37;
+		    color: #fff;
+		    border-radius: 5px;
+		    
+	    }
+	}
+	
 </style>

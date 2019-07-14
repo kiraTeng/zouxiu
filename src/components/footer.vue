@@ -67,7 +67,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" >
 	.footer-bar {
 		position: relative;
 		background: #111;

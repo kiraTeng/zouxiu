@@ -94,7 +94,6 @@
 			},
 			pay(){
 				this.$store.state.paymentPage=true
-				console.log(this.userInfo)
 			}
 		}
 	}

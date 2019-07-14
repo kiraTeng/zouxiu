@@ -3,6 +3,7 @@
   	<!--<Header></Header>-->
   	<myhead></myhead>
     <router-view/>
+	<Top></Top>
     <foot></foot>
   </div>
 </template>
@@ -10,13 +11,15 @@
 <script>
 import myhead from './components/header.vue'
 import foot from './components/footer.vue'
+import Top from './components/top.vue'
+
 export default {
   name: 'App',
 	beforeCreate() {
 		this.$router.push('../../home')
 	},
 	components:{
-			foot,myhead	
+			foot,myhead,Top
 	},
 }
 </script>

@@ -12,6 +12,7 @@
   "dependencies": {
     "area-data": "^5.0.6",
     "axios": "^0.19.0",
+    "element-ui": "^2.10.1",
     "font-awesome": "^4.7.0",
     "iview": "^3.4.2",
     "swiper": "^4.5.0",
