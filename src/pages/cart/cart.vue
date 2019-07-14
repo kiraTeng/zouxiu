@@ -2,6 +2,8 @@
 	<div class="wrap cart">
 		<div class="carCon">
 			<h3>购物车({{cartNum}})</h3>
+			
+			<div :class="{tips:true,tipsShow:tipsShow}" v-show="tipsShow"><span><i></i>请选择商品</span></div>
 			<ul class="list-header">
 				<li class="column">
 					<label for="" @click="allSelectFN()">
@@ -43,6 +45,13 @@
 						<button class="deleteBtn" @click="deleteCur(index)">删除</button>
 						<button class="starBtn">加入收藏</button>
 					</li>
+				<div class="confirmDialog" v-if="confirmShow">
+					<h4>确认要删除商品？</h4>
+					<div class="btnZone">
+						<button type='button' @click="confirm('yes',index)" class="yes">确定</button>
+						<button type='button' @click="confirm('no',index)" class="no">取消</button>
+					</div>
+				</div>
 				</ul>
 			</div>			
 			<div class="listBottom" v-if="this.cartList.length>0">
@@ -75,7 +84,7 @@
 		<div class="empty" v-if="this.cartList.length==0">
 			<img src="../../assets/public/gouwuchekong.png" alt="">
 			<p>您还没有选购商品</p>
-			<button type="button">去挑选</button>
+			<button @click="goPick()" type="button">去挑选</button>
 		</div>
 	</div>
 </template>
@@ -85,7 +94,9 @@
 		data() {
 			return {
 				allSelect: true,//是否全选
-				cartList:this.$store.state.shopCarList
+				cartList:this.$store.state.shopCarList,
+				tipsShow:false,
+				confirmShow:false,
 			};
 		},
 		filters: {
@@ -150,8 +161,19 @@
 						item.checked=this.allSelect==true?true:false;
 					}				
 			},
+			confirm(yN,index){
+				if(yN=='yes'){
+					this.confirmV=true;
+					this.cartList.splice(index,1);
+					this.confirmShow=false;
+				}else{
+					this.confirmShow=false
+				}
+			},
 			deleteCur(index){			
-				if(confirm('确定删除？'))this.cartList.splice(index,1);
+				// if(confirm('确定删除？'))this.cartList.splice(index,1);
+				this.confirmShow=true;
+				// if(this.confirmV)this.cartList.splice(index,1)
 			},
 			deleteChoose(){
 				var arr=[];
@@ -166,18 +188,102 @@
 					if(item.checked)num+=Number(item.number)
 				}
 				if(num==0){
-					alert('请选择商品');
+					this.tipsShow=true;
+					setTimeout(()=>{
+						this.tipsShow=false
+					},2000)
 				}else{
 					this.$router.push('/checkout');
 					for(let item of this.cartList){
 						if(item.checked)this.$store.state.checkoutList.push(item)
 					}
 				}
+			},
+			goPick(){
+				this.$router.push('/new');
 			}
 		}
 	};
 </script>
 <style lang="less">
+	div.tips{
+		width: 1200px;
+		text-align: center;
+		position: fixed;
+		z-index: 10;
+		top: 50px;
+		transition: all .5s;
+		i{
+			background-image: url(../../assets/public/warning.png);
+			width: 16px;
+			height: 16px;
+			background-position: center;
+			display: inline-block;
+			position: relative;
+			top: 3px;
+			margin-right: 8px;
+			background-repeat: no-repeat;
+		}
+		span{
+			background: #fff;
+			box-shadow: inset 0px 0px 15px coral;
+			padding: 20px 40px;
+			font-size: 14px;
+			color: coral;
+			
+		}
+	}
+	div.tipsShow{
+		animation: fade 1s linear both;
+	}
+	@keyframes fade{
+		from{
+			top: 50px;
+		}
+		to{
+			top: 120px;
+		}
+	}
+	div.confirmDialog{
+		width: 400px;
+		padding: 20px;
+		position: fixed;
+		top: 400px;
+		left:50%;
+		transform: translate(-50%,-50%);
+		z-index: 100;
+		box-sizing: border-box;
+		background-color: #fff;
+		border: 1px solid #E4E7ED;
+		box-shadow: 0 0 15px rgba(0,0,0,.5);
+		h4{
+			padding-left: 20px;
+			font-size: 16px;
+			font-weight: normal;
+			text-align: left;
+			margin-bottom: 40px;
+		}
+		div.btnZone{
+			display: flex;
+			justify-content: flex-end;
+			button{
+				outline: none;
+				padding: 5px 10px;
+				border: 1px solid #E0E0E0;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+			.no{
+				color: #fff;
+				background: #111;
+			}
+			.yes{
+				color: #fff;
+				background-color: #409EFF;
+				margin-right: 10px;
+			}
+		}
+	}
 	div.cart {
 		.column {
 			&:first-of-type {
@@ -472,6 +578,7 @@
 					color: #fff;
 					background: #111;
 					border: none;
+					cursor:pointer;
 				}
 			}
 		}
