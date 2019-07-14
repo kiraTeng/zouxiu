@@ -17,6 +17,8 @@
 			</Banner>
 			<Recommend></Recommend>
 			<Goods></Goods>
+			
+			
 
 		
 	</div>
@@ -27,6 +29,8 @@
 	import Banner from '../../components/banner.vue'
 	import Recommend from '../../components/Recommend.vue'
 	import Goods from '../../components/goods.vue'
+
+	
 	export default {
 		data() {
 			return {

@@ -96,7 +96,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .section{
 	background:rgb(246, 234, 218);
 }
