@@ -13,6 +13,8 @@ Vue.use(VueLazyload, {
 })
 
 
+
+
 // 省市级插件
 import VueAreaLinkage from 'vue-area-linkage';
 import 'vue-area-linkage/dist/index.css'; 

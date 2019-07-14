@@ -4,7 +4,8 @@
 			<div class="left">
 				<button @click='toRegis()'>注册</button>
 				<button @click='toLogin()'>登录</button>
-				<img @click='toCart()' src="../assets/public/gouwuchekong.png" alt="">
+				<img @click='toCart()' src="../assets/public/gouwuchekong.png" alt="" >
+				<span :class="{shopnum:this.$store.state.isNum}" v-show="isShow">{{allCount}}</span>
 			</div>
 			<img  src="../assets/public/logo.png" class="logo" alt="">
 			<div class="right">
@@ -103,6 +104,7 @@
 
 			return {
 				msg: [],
+				isNum:false,
 				selected:'home' //当前选中 current
 			};
 		},
@@ -123,16 +125,22 @@
             	this.$router.push('../../login')
             }
 		},
-		mounted() {
-//			this.$axios.get('../../static/data/Clothes.json')
-//
-//				.then(res => {
-//					this.msg = res.data;
-					// console.log('succ', t);
-//				})
-//				.catch(err => {
-//					console.log('err', err);
-//				});
+		computed:{
+			allCount(){
+				var count = 0
+				this.$store.state.shopCarList.forEach((item,index)=>{
+					count += item.count
+					console.log(count)
+				})
+				return count
+			},
+			isShow(){
+				if(this.$store.state.shopCarList.length==0){
+					return false;
+				}else{
+					return true;
+				}
+			}
 		}
 	};
 </script>
@@ -150,8 +158,6 @@
 			left: ;
 			top: 10px;
 			box-sizing: border-box;
-
-
 			img {
 				width: 18px;
 				height: 18px;
@@ -347,4 +353,24 @@
 			}
 		}
 	}
+	
+	/*购物车数量样式*/
+	.left{
+		position: relative;
+		.shopnum{
+			position: absolute;
+			top: 0px;
+			right: -30px;
+		    height: 15px;
+		    display: block;
+		    text-align: center;
+		    width: 20px;
+		    font-size: 12px;
+		    background-color: #e93b37;
+		    color: #fff;
+		    border-radius: 5px;
+		    
+	    }
+	}
+	
 </style>

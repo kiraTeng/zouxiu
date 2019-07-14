@@ -37,7 +37,7 @@
 						<span class="unit">￥</span>
 						{{item.price}}
 					</li>
-					<li class="column">1件</li>
+					<li class="column">{{item.count}}件</li>
 					<li class="column">
 						<span class="unit">￥</span>
 						{{item.count*item.price}}
